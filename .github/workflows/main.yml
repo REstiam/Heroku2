@@ -1,16 +1,16 @@
 name: CI on Github - CD on Heroku
-
+ 
 on:
   push:
     branches: [ "main" ]
-
+ 
 permissions:
   contents: read
-
+ 
 jobs:
   build:
     runs-on: ubuntu-latest
-
+ 
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python 3.11
@@ -32,7 +32,7 @@ jobs:
       - name: Lint with black
         uses: psf/black@stable  # formatting with black
         continue-on-error: true
-
+ 
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -44,4 +44,3 @@ jobs:
           heroku_api_key: b70b8243-07a1-4cb9-ae50-63e150aa788b
           heroku_app_name: young-thicket-47870
           heroku_email: roddy.pameole@estiam.com
-          
